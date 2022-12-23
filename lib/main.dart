@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const StatefulExample(),
     );
   }
 }
@@ -63,6 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    print("_MyHomePageState  вызван метод build ");
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -111,5 +113,46 @@ class _MyHomePageState extends State<MyHomePage> {
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+}
+
+
+class MyFirstWidget extends StatelessWidget {
+
+  const MyFirstWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    int counter = 0;
+    counter++;
+    print("Метод build был вызван counter=$counter");
+    
+    return Container(
+      child: const Center(
+        child: Text('Hello!')
+      ),
+    );
+  }
+}
+
+class StatefulExample extends StatefulWidget {
+  const StatefulExample({super.key});
+
+  @override
+  State<StatefulExample> createState() => _StatefulExampleState();
+}
+
+class _StatefulExampleState extends State<StatefulExample> {
+  int counter = 0;
+  _count(){
+    setState(() {
+      counter+=1;
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    _count();
+    print("counter = $counter");
+    return Container();
   }
 }
