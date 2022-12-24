@@ -10,6 +10,7 @@ class SightListScreen extends StatefulWidget {
 class _SightListScreenState extends State<SightListScreen> {
   int counter = 0;
   double counterWidth = 50;
+  Color defaultColor = Colors.white;
 
   void _increment() {
     setState(() {
@@ -21,12 +22,41 @@ class _SightListScreenState extends State<SightListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Text(
-          "AppBarTitle",
-          style: TextStyle(
-            color: Colors.blue,
+      backgroundColor: defaultColor,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(128),
+        child: AppBar(
+          backgroundColor: defaultColor,
+          elevation: 0,
+          toolbarHeight: 128,
+          title: RichText(
+            textAlign: TextAlign.left,
+            text: const TextSpan(
+              style: TextStyle(
+                color: Color.fromRGBO(37, 40, 73, 1),
+                fontFamily: "Roboto",
+                fontStyle: FontStyle.normal,
+                fontWeight: FontWeight.w700,
+                fontSize: 32,
+                height: 1.12,
+              ),
+              children: [
+                TextSpan(
+                  text: "C",
+                  style: TextStyle(
+                    color: Color.fromRGBO(76, 175, 80, 1),
+                  ),
+                ),
+                TextSpan(text: "писок \n"),
+                TextSpan(
+                  text: "и",
+                  style: TextStyle(
+                    color: Color.fromRGBO(252, 221, 61, 1),
+                  ),
+                ),
+                TextSpan(text: "нтересных мест")
+              ],
+            ),
           ),
         ),
       ),
@@ -70,7 +100,6 @@ class _SightListScreenState extends State<SightListScreen> {
           ],
         ),
       ),
-      backgroundColor: Colors.lightBlue,
       floatingActionButton: FloatingActionButton(
         onPressed: _increment,
         backgroundColor: Colors.greenAccent,
