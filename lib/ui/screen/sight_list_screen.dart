@@ -14,22 +14,41 @@ class _SightListScreenState extends State<SightListScreen> {
   void _increment() {
     setState(() {
       counter += 1;
-      if(counter>=100) counterWidth = 80;
+      if (counter >= 100) counterWidth = 80;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PreferredSize(
-        preferredSize: Size(double.infinity, 21),
-        child: Text("AppBarText"),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: const Text(
+          "AppBarTitle",
+          style: TextStyle(
+            color: Colors.blue,
+          ),
+        ),
       ),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const TextField(
+              keyboardType: TextInputType.name,
+              textCapitalization: TextCapitalization.words,
+              textInputAction: TextInputAction.next,
+              autofocus: true,
+              decoration: InputDecoration(
+                fillColor: Colors.amber,
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
             const Text("Hello! It is SightListScreen"),
             const Text("Counter value :"),
             const Divider(height: 10.0),
@@ -61,6 +80,7 @@ class _SightListScreenState extends State<SightListScreen> {
           size: 45,
         ),
       ),
+      resizeToAvoidBottomInset: false,
     );
   }
 }
