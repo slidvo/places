@@ -9,10 +9,12 @@ class SightListScreen extends StatefulWidget {
 
 class _SightListScreenState extends State<SightListScreen> {
   int counter = 0;
+  double counterWidth = 50;
 
   void _increment() {
     setState(() {
       counter += 1;
+      if(counter>=100) counterWidth = 80;
     });
   }
 
@@ -25,16 +27,23 @@ class _SightListScreenState extends State<SightListScreen> {
       ),
       body: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text("Hello! It is SightListScreen"),
             const Text("Counter value :"),
+            const Divider(height: 10.0),
             Container(
-              color: Colors.amberAccent,
+              width: counterWidth,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(color: Colors.white)),
               child: Text(
                 "$counter",
                 style: const TextStyle(
-                  fontSize: 16,
+                  fontSize: 42,
                   color: Colors.white,
                 ),
               ),
@@ -43,7 +52,15 @@ class _SightListScreenState extends State<SightListScreen> {
         ),
       ),
       backgroundColor: Colors.lightBlue,
-      floatingActionButton: FloatingActionButton(onPressed: _increment),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _increment,
+        backgroundColor: Colors.greenAccent,
+        child: const Icon(
+          Icons.add,
+          color: Colors.deepPurple,
+          size: 45,
+        ),
+      ),
     );
   }
 }
