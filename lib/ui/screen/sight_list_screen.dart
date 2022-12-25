@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places/mocks.dart';
 
 class SightListScreen extends StatefulWidget {
   const SightListScreen({Key? key}) : super(key: key);
@@ -63,8 +64,27 @@ class _SightListScreenState extends State<SightListScreen> {
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(32),
+                  color: Colors.greenAccent),
+              margin: const EdgeInsets.all(5),
+              child: Column(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(32),
+                    child: Image.network(mocks[0].url),
+                  ),
+                  Text(mocks[0].name),
+                  Text(
+                    mocks[0].details,
+                    textAlign: TextAlign.center,
+                  )
+                ],
+              ),
+            ),
             const TextField(
               keyboardType: TextInputType.name,
               textCapitalization: TextCapitalization.words,
@@ -96,7 +116,7 @@ class _SightListScreenState extends State<SightListScreen> {
                   color: Colors.white,
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
