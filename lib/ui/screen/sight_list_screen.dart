@@ -63,44 +63,49 @@ class _SightListScreenState extends State<SightListScreen> {
         ),
       ),
       body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
+        child: ListView(
           children: [
-            SightCard(sight: mocks[0]),
-            SightCard(sight: mocks[1]),
-            const TextField(
-              keyboardType: TextInputType.name,
-              textCapitalization: TextCapitalization.words,
-              textInputAction: TextInputAction.next,
-              autofocus: true,
-              decoration: InputDecoration(
-                fillColor: Colors.amber,
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.white,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Column(
+                  children: mocks.map((sight) => SightCard(sight: sight)).toList(),
+                ),
+                const TextField(
+                  keyboardType: TextInputType.name,
+                  textCapitalization: TextCapitalization.words,
+                  textInputAction: TextInputAction.next,
+                  autofocus: true,
+                  decoration: InputDecoration(
+                    fillColor: Colors.amber,
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-            const Text("Hello! It is SightListScreen"),
-            const Text("Counter value :"),
-            const Divider(height: 10.0),
-            Container(
-              width: counterWidth,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(color: Colors.white)),
-              child: Text(
-                "$counter",
-                style: const TextStyle(
-                  fontSize: 42,
-                  color: Colors.white,
+                const Text("Hello! It is SightListScreen"),
+                const Text("Counter value :"),
+                const Divider(height: 10.0),
+                Container(
+                  width: counterWidth,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(15),
+                      border: Border.all(color: Colors.white)),
+                  child: Text(
+                    "$counter",
+                    style: const TextStyle(
+                      fontSize: 42,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
-              ),
-            ),
+              ],
+            )
           ],
         ),
       ),
