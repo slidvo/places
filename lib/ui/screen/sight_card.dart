@@ -91,6 +91,7 @@ class SightCard extends StatelessWidget {
                             fontFamily: "Roboto",
                             fontSize: 14,
                           ),
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ],
                     ),
