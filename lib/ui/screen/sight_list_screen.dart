@@ -75,7 +75,7 @@ class _SightListScreenState extends State<SightListScreen> {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(32),
-                    child: Image.network(mocks[0].url),
+                    child:  Image.network(mocks[0].url),
                   ),
                   Text(mocks[0].name),
                   Text(

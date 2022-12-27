@@ -1,6 +1,5 @@
 ///Достопримечательность
 class Sight {
-
   /// Название места
   final String name;
 
@@ -19,5 +18,12 @@ class Sight {
   ///Тип достопримечательности
   final String type;
 
-  Sight({required this.name, required this.lat, required this.lon, required this.url, required this.type, required this.details});
+  Sight({
+    required this.name,
+    required this.lat,
+    required this.lon,
+    required this.url,
+    required this.type,
+    required this.details,
+  });
 }
