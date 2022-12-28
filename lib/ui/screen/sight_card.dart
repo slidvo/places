@@ -8,99 +8,108 @@ class SightCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 96 * 2,
-      width: double.infinity,
-      margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-      decoration: const BoxDecoration(
-          color: Color.fromRGBO(245, 245, 245, 1),
-          borderRadius: BorderRadius.all(Radius.circular(12))),
-      child: Column(
-        children: [
-          Expanded(
-            flex: 1,
-            child: Stack(
-              children: [
-                Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.blueGrey,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(12),
-                      topRight: Radius.circular(12),
-                    ),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(12),
-                      topRight: Radius.circular(12),
-                    ),
-                    child: Image.network(
-                      sight.url,
-                      width: double.infinity,
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: 16,
-                  top: 16,
-                  child: Text(
-                    sight.type,
-                    style: const TextStyle(
-                        color: Colors.white54,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                        height: 1.29,
-                        fontStyle: FontStyle.normal,
-                        fontFamily: "Roboto"),
-                  ),
-                ),
-                Positioned(
-                  right: 18,
-                  top: 19,
-                  child: Container(
-                    height: 20,
-                    width: 18,
-                    color: Colors.red,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
-              margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+    return AspectRatio(
+      aspectRatio: 3/2,
+      child: Container(
+        height: 96 * 2,
+        margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+        decoration: const BoxDecoration(
+            color: Color.fromRGBO(245, 245, 245, 1),
+            borderRadius: BorderRadius.all(Radius.circular(12))),
+        child: Column(
+          children: [
+            Expanded(
+              flex: 1,
               child: Stack(
                 children: [
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.blueGrey,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(12),
+                        topRight: Radius.circular(12),
+                      ),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(12),
+                        topRight: Radius.circular(12),
+                      ),
+                      child: Image.network(
+                        sight.url,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
                   Positioned(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Text(
-                          sight.name,
-                          style: const TextStyle(
-                            fontFamily: "Roboto",
-                            fontSize: 16,
-                          ),
-                        ),
-                        Text(
-                          sight.details,
-                          style: const TextStyle(
-                            color: Color.fromRGBO(124, 126, 146, 1),
-                            fontFamily: "Roboto",
-                            fontSize: 14,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+                    left: 16,
+                    top: 16,
+                    child: Text(
+                      sight.type,
+                      style: const TextStyle(
+                          color: Colors.white54,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                          height: 1.29,
+                          fontStyle: FontStyle.normal,
+                          fontFamily: "Roboto"),
+                    ),
+                  ),
+                  Positioned(
+                    right: 18,
+                    top: 19,
+                    child: Container(
+                      child: Image.asset("res/image/Heart.png"),
                     ),
                   ),
                 ],
               ),
             ),
-          )
-        ],
+            SizedBox(
+              height: 5,
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                alignment: Alignment.centerLeft,
+                margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                child: Stack(
+                  children: [
+                    Positioned(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            sight.name,
+                            style: const TextStyle(
+                              fontFamily: "Roboto",
+                              fontSize: 16,
+                            ),
+                          ),
+                          ConstrainedBox(
+                            constraints: const BoxConstraints(
+                              maxWidth: 200,
+                            ),
+                            child: Text(
+                              sight.details,
+                              style: const TextStyle(
+                                color: Color.fromRGBO(124, 126, 146, 1),
+                                fontFamily: "Roboto",
+                                fontSize: 14,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

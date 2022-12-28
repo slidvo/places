@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:places/mocks.dart';
 import 'package:places/ui/screen/sight_card.dart';
 
@@ -26,9 +27,12 @@ class _SightListScreenState extends State<SightListScreen> {
     return Scaffold(
       backgroundColor: defaultColor,
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(128),
+        preferredSize: const Size.fromHeight(125),
         child: AppBar(
           backgroundColor: defaultColor,
+          systemOverlayStyle: const SystemUiOverlayStyle(
+            statusBarColor: Colors.transparent,
+          ),
           elevation: 0,
           toolbarHeight: 128,
           title: RichText(
@@ -70,7 +74,8 @@ class _SightListScreenState extends State<SightListScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Column(
-                  children: mocks.map((sight) => SightCard(sight: sight)).toList(),
+                  children:
+                      mocks.map((sight) => SightCard(sight: sight)).toList(),
                 ),
                 const TextField(
                   keyboardType: TextInputType.name,
