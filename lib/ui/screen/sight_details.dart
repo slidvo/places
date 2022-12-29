@@ -112,16 +112,21 @@ class SightDetails extends StatelessWidget {
                     ),
                     Expanded(
                       child: SingleChildScrollView(
-                        child: Text(
-                          sight.details,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            fontStyle: FontStyle.normal,
-                            fontFamily: "Roboto",
-                            height: 1.2,
-                            color: Color.fromRGBO(59, 62, 91, 1),
-                            decoration: TextDecoration.none,
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(
+                            maxWidth: 250
+                          ),
+                          child: Text(
+                            sight.details,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              fontStyle: FontStyle.normal,
+                              fontFamily: "Roboto",
+                              height: 1.2,
+                              color: Color.fromRGBO(59, 62, 91, 1),
+                              decoration: TextDecoration.none,
+                            ),
                           ),
                         ),
                       ),
