@@ -11,16 +11,7 @@ class SightListScreen extends StatefulWidget {
 }
 
 class _SightListScreenState extends State<SightListScreen> {
-  int counter = 0;
-  double counterWidth = 50;
   Color defaultColor = Colors.white;
-
-  void _increment() {
-    setState(() {
-      counter += 1;
-      if (counter >= 100) counterWidth = 80;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,50 +68,9 @@ class _SightListScreenState extends State<SightListScreen> {
                   children:
                       mocks.map((sight) => SightCard(sight: sight)).toList(),
                 ),
-                const TextField(
-                  keyboardType: TextInputType.name,
-                  textCapitalization: TextCapitalization.words,
-                  textInputAction: TextInputAction.next,
-                  autofocus: true,
-                  decoration: InputDecoration(
-                    fillColor: Colors.amber,
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-                const Text("Hello! It is SightListScreen"),
-                const Text("Counter value :"),
-                const Divider(height: 10.0),
-                Container(
-                  width: counterWidth,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(15),
-                      border: Border.all(color: Colors.white)),
-                  child: Text(
-                    "$counter",
-                    style: const TextStyle(
-                      fontSize: 42,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
               ],
             )
           ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _increment,
-        backgroundColor: Colors.greenAccent,
-        child: const Icon(
-          Icons.add,
-          color: Colors.deepPurple,
-          size: 45,
         ),
       ),
       resizeToAvoidBottomInset: false,
