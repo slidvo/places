@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:places/mocks.dart';
 import '../../domain/sight.dart';
 
 class SightDetails extends StatelessWidget {
@@ -19,10 +18,27 @@ class SightDetails extends StatelessWidget {
             width: double.infinity,
             child: Stack(
               children: [
-                Positioned(
+                SizedBox(
                   height: 360,
-                  left: -135,
-                  child: Image.network(mocks[0].url),
+                  child: Image.network(
+                    sight.url,
+                    fit: BoxFit.fitHeight,
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return Center(
+                        child: SizedBox(
+                          width: 150,
+                          height: 150,
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                    loadingProgress.expectedTotalBytes!
+                                : null,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 ),
                 Positioned(
                   top: 36,
@@ -55,7 +71,7 @@ class SightDetails extends StatelessWidget {
             ),
           ),
           Expanded(
-            child:  Container(
+            child: Container(
               margin: EdgeInsets.only(top: 30),
               child: Container(
                 margin: EdgeInsets.fromLTRB(16, 0, 16, 16),
@@ -113,9 +129,7 @@ class SightDetails extends StatelessWidget {
                     Expanded(
                       child: SingleChildScrollView(
                         child: ConstrainedBox(
-                          constraints: BoxConstraints(
-                            maxWidth: 250
-                          ),
+                          constraints: BoxConstraints(maxWidth: 250),
                           child: Text(
                             sight.details,
                             style: const TextStyle(
@@ -202,8 +216,7 @@ class SightDetails extends StatelessWidget {
                             fontStyle: FontStyle.normal,
                             fontFamily: "Roboto",
                             height: 1.2,
-                            color:
-                            Color.fromRGBO(124, 126, 146, 0.56),
+                            color: Color.fromRGBO(124, 126, 146, 0.56),
                             decoration: TextDecoration.none,
                           ),
                         )
@@ -258,7 +271,6 @@ class SightDetails extends StatelessWidget {
               ),
             ],
           ),
-
         ],
       ),
     );
