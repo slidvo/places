@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:places/mocks.dart';
-import 'package:places/ui/screen/sight_details.dart';
+import 'package:places/ui/screen/visiting_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,9 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SightDetails(
-        sight: mocks[0],
-      ),
+      home: VisitingScreen()
     );
   }
 }
