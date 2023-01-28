@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places/mocks.dart';
 import 'package:places/styles/custom_text_style.dart';
 import 'package:places/templates/visiting_screen/visiting_screen_tab.dart';
 import 'package:places/templates/visiting_screen/visiting_screen_tab_bar_view.dart';
@@ -81,8 +82,13 @@ class _VisitingScreenState extends State<VisitingScreen>
         children: [
           materialVisitingScreenTitle(),
           visitingScreenDefaultTabs(
-              _tabController, inactiveColor, _updateTabs, tab1, tab2),
-          visitingScreenTabBarView(_tabController),
+            _tabController,
+            inactiveColor,
+            _updateTabs,
+            tab1,
+            tab2,
+          ),
+          visitingScreenTabBarView(_tabController, favoriteVisitPlaceMocks),
         ],
       ),
     );

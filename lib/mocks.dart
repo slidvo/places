@@ -1,3 +1,5 @@
+import 'package:places/domain/favorite_visit_place.dart';
+
 import 'domain/sight.dart';
 
 final List<Sight> mocks = [
@@ -62,4 +64,32 @@ final List<Sight> mocks = [
           "https://img-fotki.yandex.ru/get/5009/19099752.40/0_a0540_adae51e5_XL.jpg",
       type: "мистика",
       details: "Просто пассажирский самолёт в джунглях")
+];
+
+final List<FavoriteVisitPlace> favoriteVisitPlaceMocks = [
+  FavoriteVisitPlace(
+    sight: mocks[0],
+    planedDate: DateTime.now(),
+    openingTime: DateTime.now(),
+  ),
+  FavoriteVisitPlace(
+    sight: mocks[1],
+    planedDate: DateTime.now(),
+    openingTime: DateTime.now(),
+  ),
+  FavoriteVisitPlace(
+    sight: mocks[2],
+    planedDate: DateTime.now(),
+    openingTime: DateTime.now(),
+  ),
+  FavoriteVisitPlace(
+    sight: mocks[3],
+    planedDate: DateTime.now(),
+    openingTime: DateTime.now(),
+  ),
+  FavoriteVisitPlace(
+    sight: mocks[4],
+    planedDate: DateTime.now(),
+    openingTime: DateTime.now(),
+  ),
 ];
