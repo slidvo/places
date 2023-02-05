@@ -90,6 +90,20 @@ class _VisitingScreenState extends State<VisitingScreen>
           visitingScreenTabBarView(_tabController, []),
         ],
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        unselectedItemColor: Colors.black,
+        selectedItemColor: Colors.blue,
+        items: [
+          BottomNavigationBarItem(
+              icon: Image.asset("res/image/List.png"), label: ""),
+          BottomNavigationBarItem(
+              icon: Image.asset("res/image/Map.png"), label: ""),
+          BottomNavigationBarItem(
+              icon: Image.asset("res/image/heart_full.png"), label: ""),
+          BottomNavigationBarItem(
+              icon: Image.asset("res/image/Settings.png"), label: ""),
+        ],
+      ),
     );
   }
 }
