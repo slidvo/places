@@ -4,10 +4,12 @@ import 'package:places/ui/screen/favorite_visit_place_card.dart';
 
 import 'favorite_visit_place_empty_screen.dart';
 
-
 Expanded visitingScreenTabBarView(
     TabController tabController, List<FavoriteVisitPlace> favoriteVisitPlaces) {
-  final favoriteVisitPlacesNotAchieved = favoriteVisitPlaces.where((element) => !element.isGoalAchieved).toList();
+  final favoriteVisitPlacesNotAchieved =
+      favoriteVisitPlaces.where((element) => !element.isGoalAchieved).toList();
+  final favoriteVisitPlacesAchieved =
+      favoriteVisitPlaces.where((element) => element.isGoalAchieved).toList();
   return Expanded(
     child: TabBarView(
       controller: tabController,
@@ -18,10 +20,14 @@ Expanded visitingScreenTabBarView(
                 itemCount: favoriteVisitPlacesNotAchieved.length,
                 itemBuilder: (context, index) {
                   return FavoriteVisitPlaceCard(
-                      favoriteVisitPlace: favoriteVisitPlacesNotAchieved[index]);
+                      favoriteVisitPlace:
+                          favoriteVisitPlacesNotAchieved[index]);
                 },
               ),
-        const Center(child: Text("Content Tab 2")),
+        ListView.builder(
+            itemCount: favoriteVisitPlacesAchieved.length,
+            itemBuilder: (context, index) => FavoriteVisitPlaceCard(
+                favoriteVisitPlace: favoriteVisitPlacesAchieved[index]))
       ],
     ),
   );
