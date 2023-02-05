@@ -56,7 +56,7 @@ class _VisitingScreenState extends State<VisitingScreen>
             activeVisitingTabBar("Хочу посетить", FontWeight.w700, 14, 1),
             tab1IsActive);
         tab2 = visitingScreenTab(
-            inActiveVisitingTabBar("Посетить", FontWeight.w700, 14, 1),
+            inActiveVisitingTabBar("Посетил", FontWeight.w700, 14, 1),
             tab2IsActive);
       }
       if (value == 1) {
@@ -68,7 +68,7 @@ class _VisitingScreenState extends State<VisitingScreen>
             inActiveVisitingTabBar("Хочу посетить", FontWeight.w700, 14, 1),
             tab1IsActive);
         tab2 = visitingScreenTab(
-            activeVisitingTabBar("Посетить", FontWeight.w700, 14, 1),
+            activeVisitingTabBar("Посетил", FontWeight.w700, 14, 1),
             tab2IsActive);
       }
     });

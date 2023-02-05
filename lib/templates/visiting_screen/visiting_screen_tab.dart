@@ -13,8 +13,13 @@ Container visitingScreenTab(Text text, bool isActive) {
       child: text);
 }
 
-Container visitingScreenDefaultTabs(TabController tabController,
-    Color inactiveColor, Function updateTabs, Container tab1, Container tab2) {
+Container visitingScreenDefaultTabs(
+  TabController tabController,
+  Color inactiveColor,
+  Function updateTabs,
+  Container tab1,
+  Container tab2,
+) {
   const tabBorderRadius = BorderRadius.all(Radius.circular(40));
 
   return Container(

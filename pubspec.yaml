@@ -26,6 +26,7 @@ flutter:
   uses-material-design: true
   assets:
     - ./res/image/
+    - ./res/image/emptyTabScreen/
   fonts:
     - family: Roboto
       fonts:
