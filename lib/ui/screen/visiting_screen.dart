@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:places/mocks.dart';
 import 'package:places/styles/custom_text_style.dart';
-import 'package:places/templates/visiting_screen/visiting_screen_tab.dart';
-import 'package:places/templates/visiting_screen/visiting_screen_tab_bar_view.dart';
-import 'package:places/templates/visiting_screen/visiting_screen_title.dart';
-import '../../templates/app_bar_default.dart' as app_bar_templates;
+
+import '../widgets/visiting_screen/visiting_screen_tab.dart';
+import '../widgets/visiting_screen/visiting_screen_tab_bar_view.dart';
+import '../widgets/visiting_screen/visiting_screen_title.dart';
 
 class VisitingScreen extends StatefulWidget {
   const VisitingScreen({Key? key}) : super(key: key);
@@ -14,15 +16,13 @@ class VisitingScreen extends StatefulWidget {
 
 class _VisitingScreenState extends State<VisitingScreen>
     with SingleTickerProviderStateMixin {
-  final Color activeColor = const Color.fromRGBO(59, 62, 91, 1);
-  final Color inactiveColor = const Color.fromRGBO(245, 245, 245, 1);
-  bool tab1IsActive = true;
-  bool tab2IsActive = false;
+  final Color _activeColor = const Color.fromRGBO(59, 62, 91, 1);
+  final Color _inactiveColor = const Color.fromRGBO(245, 245, 245, 1);
   late TabController _tabController;
-  late Color tab1Color;
-  late Color tab2Color;
-  late Container tab1;
-  late Container tab2;
+  late Color _tab1Color;
+  late Color _tab2Color;
+  late Container _tab1;
+  late Container _tab2;
 
   @override
   void initState() {
@@ -34,60 +34,62 @@ class _VisitingScreenState extends State<VisitingScreen>
       });
     });
 
-    tab1 = visitingScreenTab(
-        activeVisitingTabBar("Хочу посетить", FontWeight.w700, 14, 1),
-        tab1IsActive);
-    tab2 = visitingScreenTab(
-        inActiveVisitingTabBar("Посетить", FontWeight.w700, 14, 1),
-        tab2IsActive);
-    tab1Color = activeColor;
-    tab2Color = inactiveColor;
+    _activateTab1();
+  }
+
+  _activateTab1() {
+    _tab1Color = _activeColor;
+    _tab2Color = _inactiveColor;
+    _tab1 = visitingScreenTab(
+        const VisitingTabBar(title: "Хочу посетить", isActive: true));
+    _tab2 = visitingScreenTab(
+        const VisitingTabBar(title: "Посетил", isActive: false));
+  }
+
+  _activeTab2() {
+    _tab1Color = _inactiveColor;
+    _tab2Color = _activeColor;
+    _tab1 = visitingScreenTab(
+        const VisitingTabBar(title: "Хочу посетить", isActive: false));
+    _tab2 = visitingScreenTab(
+        const VisitingTabBar(title: "Посетил", isActive: true));
   }
 
   _updateTabs(value) {
     setState(() {
-      if (value == 0) {
-        tab1Color = activeColor;
-        tab2Color = inactiveColor;
-        tab1IsActive = true;
-        tab2IsActive = false;
-        tab1 = visitingScreenTab(
-            activeVisitingTabBar("Хочу посетить", FontWeight.w700, 14, 1),
-            tab1IsActive);
-        tab2 = visitingScreenTab(
-            inActiveVisitingTabBar("Посетил", FontWeight.w700, 14, 1),
-            tab2IsActive);
-      }
-      if (value == 1) {
-        tab1Color = inactiveColor;
-        tab2Color = activeColor;
-        tab1IsActive = false;
-        tab2IsActive = true;
-        tab1 = visitingScreenTab(
-            inActiveVisitingTabBar("Хочу посетить", FontWeight.w700, 14, 1),
-            tab1IsActive);
-        tab2 = visitingScreenTab(
-            activeVisitingTabBar("Посетил", FontWeight.w700, 14, 1),
-            tab2IsActive);
-      }
+      value == 0 ? _activateTab1() : _activeTab2();
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: app_bar_templates.appBarDefault(),
+      appBar: PreferredSize(
+        preferredSize: Size.zero,
+        child: AppBar(
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          systemOverlayStyle: const SystemUiOverlayStyle(
+            statusBarColor: Colors.transparent,
+            statusBarBrightness: Brightness.dark,
+            statusBarIconBrightness: Brightness.dark,
+          ),
+        ),
+      ),
       body: Column(
         children: [
-          materialVisitingScreenTitle(),
-          visitingScreenDefaultTabs(
-            _tabController,
-            inactiveColor,
-            _updateTabs,
-            tab1,
-            tab2,
+          const VisitingScreenTittle(),
+          VisitingScreenDefaultTabs(
+            tabController: _tabController,
+            inactiveColor: _inactiveColor,
+            updateTabs: _updateTabs,
+            tab1: _tab1,
+            tab2: _tab2,
           ),
-          visitingScreenTabBarView(_tabController, []),
+          VisitingScreenTabBarView(
+            tabController: _tabController,
+            favoriteVisitPlaces: favoriteVisitPlaceMocks,
+          ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
