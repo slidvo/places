@@ -95,13 +95,13 @@ class _VisitingScreenState extends State<VisitingScreen>
         selectedItemColor: Colors.blue,
         items: [
           BottomNavigationBarItem(
-              icon: Image.asset("res/image/List.png"), label: ""),
+              icon: Image.asset("res/image/list_icon.png"), label: ""),
           BottomNavigationBarItem(
-              icon: Image.asset("res/image/Map.png"), label: ""),
+              icon: Image.asset("res/image/map_icon.png"), label: ""),
           BottomNavigationBarItem(
               icon: Image.asset("res/image/heart_full.png"), label: ""),
           BottomNavigationBarItem(
-              icon: Image.asset("res/image/Settings.png"), label: ""),
+              icon: Image.asset("res/image/settings_icon.png"), label: ""),
         ],
       ),
     );

@@ -75,7 +75,7 @@ class _FavoriteVisitPlaceCardState extends State<FavoriteVisitPlaceCard> {
                     children: [
                       widget.favoriteVisitPlace.isGoalAchieved
                           ? Image.asset("res/image/share_icon.png")
-                          : Image.asset("res/image/Calendar.png"),
+                          : Image.asset("res/image/calendar.png"),
                       const Divider(indent: 23),
                       Image.asset("res/image/icon_close.png"),
                     ],

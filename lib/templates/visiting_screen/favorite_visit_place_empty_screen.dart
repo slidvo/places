@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 Column favoriteVisitPlaceEmptyScreen() {
-  const String path = "res/image/emptyTabScreen";
+  const String path = "res/image";
   return Column(
     mainAxisAlignment: MainAxisAlignment.center,
     crossAxisAlignment: CrossAxisAlignment.center,
@@ -12,9 +12,9 @@ Column favoriteVisitPlaceEmptyScreen() {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            Positioned(top: 0, child: Image.asset("$path/003.png")),
-            Positioned(top: 10, child: Image.asset("$path/001.png")),
-            Positioned(top: 25, child: Image.asset("$path/002.png")),
+            Positioned(top: 0, child: Image.asset("$path/right_arrow_icon.png")),
+            Positioned(top: 10, child: Image.asset("$path/border_icon.png")),
+            Positioned(top: 25, child: Image.asset("$path/circle_icon.png")),
           ],
         ),
       ),
