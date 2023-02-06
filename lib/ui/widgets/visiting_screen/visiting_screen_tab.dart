@@ -30,8 +30,8 @@ class VisitingScreenDefaultTabs extends StatelessWidget {
       ),
       child: TabBar(
         controller: tabController,
-        onTap: (value) {
-          updateTabs(value);
+        onTap: (tabIndex) {
+          updateTabs(tabIndex: tabIndex);
         },
         labelPadding: EdgeInsets.zero,
         indicatorColor: Colors.transparent,

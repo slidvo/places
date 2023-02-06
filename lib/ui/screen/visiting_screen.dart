@@ -16,11 +16,8 @@ class VisitingScreen extends StatefulWidget {
 
 class _VisitingScreenState extends State<VisitingScreen>
     with SingleTickerProviderStateMixin {
-  final Color _activeColor = const Color.fromRGBO(59, 62, 91, 1);
   final Color _inactiveColor = const Color.fromRGBO(245, 245, 245, 1);
   late TabController _tabController;
-  late Color _tab1Color;
-  late Color _tab2Color;
   late Container _tab1;
   late Container _tab2;
 
@@ -30,7 +27,9 @@ class _VisitingScreenState extends State<VisitingScreen>
     _tabController = TabController(initialIndex: 0, length: 2, vsync: this);
     _tabController.addListener(() {
       setState(() {
-        _tabController.index == 0 ? _updateTabs(0) : _updateTabs(1);
+        _tabController.index == 0
+            ? _updateTabs(tabIndex: 0)
+            : _updateTabs(tabIndex: 1);
       });
     });
 
@@ -38,8 +37,6 @@ class _VisitingScreenState extends State<VisitingScreen>
   }
 
   _activateTab1() {
-    _tab1Color = _activeColor;
-    _tab2Color = _inactiveColor;
     _tab1 = visitingScreenTab(
         const VisitingTabBar(title: "Хочу посетить", isActive: true));
     _tab2 = visitingScreenTab(
@@ -47,17 +44,15 @@ class _VisitingScreenState extends State<VisitingScreen>
   }
 
   _activeTab2() {
-    _tab1Color = _inactiveColor;
-    _tab2Color = _activeColor;
     _tab1 = visitingScreenTab(
         const VisitingTabBar(title: "Хочу посетить", isActive: false));
     _tab2 = visitingScreenTab(
         const VisitingTabBar(title: "Посетил", isActive: true));
   }
 
-  _updateTabs(value) {
+  void _updateTabs({required int tabIndex}) {
     setState(() {
-      value == 0 ? _activateTab1() : _activeTab2();
+      tabIndex == 0 ? _activateTab1() : _activeTab2();
     });
   }
 
