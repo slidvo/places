@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:places/styles/custom_text_style.dart';
 
-class VisitingScreenDefaultTabs extends StatelessWidget {
+class VisitingScreenTabBar extends StatelessWidget {
   final TabController tabController;
   final Color inactiveColor;
   final Function updateTabs;
-  final Container tab1;
-  final Container tab2;
+  final List<Widget> tabs;
   static const tabBorderRadius = BorderRadius.all(Radius.circular(40));
 
-  const VisitingScreenDefaultTabs({
+  const VisitingScreenTabBar({
     Key? key,
     required this.tabController,
     required this.inactiveColor,
     required this.updateTabs,
-    required this.tab1,
-    required this.tab2,
+    required this.tabs,
   }) : super(key: key);
 
   @override
@@ -37,21 +34,8 @@ class VisitingScreenDefaultTabs extends StatelessWidget {
         indicatorColor: Colors.transparent,
         splashBorderRadius: tabBorderRadius,
         labelColor: Colors.transparent,
-        tabs: [tab1, tab2],
+        tabs: tabs,
       ),
     );
   }
-}
-
-Container visitingScreenTab(VisitingTabBar visitingTabBar) {
-  return Container(
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-          color: visitingTabBar.isActive
-              ? const Color.fromRGBO(59, 62, 91, 1)
-              : const Color.fromRGBO(245, 245, 245, 1),
-          borderRadius: const BorderRadius.all(Radius.circular(40))),
-      height: 40,
-      width: double.infinity,
-      child: visitingTabBar);
 }

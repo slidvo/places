@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class VisitingTabBar extends StatelessWidget {
+class VisitingTabBarText extends StatelessWidget {
   final String title;
   final bool isActive;
 
-  const VisitingTabBar({Key? key, required this.title, required this.isActive})
+  const VisitingTabBarText({Key? key, required this.title, required this.isActive})
       : super(key: key);
 
   @override

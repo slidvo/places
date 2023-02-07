@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:places/mocks.dart';
-import 'package:places/styles/custom_text_style.dart';
+import 'package:places/ui/widgets/visiting_screen/custom_tab_bar_text.dart';
 
-import '../widgets/visiting_screen/visiting_screen_tab.dart';
+import '../widgets/visiting_screen/visiting_screen_tab_container.dart';
+import '../widgets/visiting_screen/visiting_screen_tab_bar.dart';
 import '../widgets/visiting_screen/visiting_screen_tab_bar_view.dart';
 import '../widgets/visiting_screen/visiting_screen_title.dart';
 
@@ -18,8 +19,8 @@ class _VisitingScreenState extends State<VisitingScreen>
     with SingleTickerProviderStateMixin {
   final Color _inactiveColor = const Color.fromRGBO(245, 245, 245, 1);
   late TabController _tabController;
-  late Container _tab1;
-  late Container _tab2;
+  late Widget _tab1;
+  late Widget _tab2;
 
   @override
   void initState() {
@@ -36,18 +37,22 @@ class _VisitingScreenState extends State<VisitingScreen>
     _activateTab1();
   }
 
-  _activateTab1() {
-    _tab1 = visitingScreenTab(
-        const VisitingTabBar(title: "Хочу посетить", isActive: true));
-    _tab2 = visitingScreenTab(
-        const VisitingTabBar(title: "Посетил", isActive: false));
+  void _activateTab1() {
+    _tab1 = const VisitingScreenTabContainer(
+        visitingTabBarText:
+            VisitingTabBarText(title: "Хочу посетить", isActive: true));
+    _tab2 = const VisitingScreenTabContainer(
+        visitingTabBarText:
+            VisitingTabBarText(title: "Посетил", isActive: false));
   }
 
-  _activeTab2() {
-    _tab1 = visitingScreenTab(
-        const VisitingTabBar(title: "Хочу посетить", isActive: false));
-    _tab2 = visitingScreenTab(
-        const VisitingTabBar(title: "Посетил", isActive: true));
+  void _activeTab2() {
+    _tab1 = const VisitingScreenTabContainer(
+        visitingTabBarText:
+            VisitingTabBarText(title: "Хочу посетить", isActive: false));
+    _tab2 = const VisitingScreenTabContainer(
+        visitingTabBarText:
+            VisitingTabBarText(title: "Посетил", isActive: true));
   }
 
   void _updateTabs({required int tabIndex}) {
@@ -74,12 +79,11 @@ class _VisitingScreenState extends State<VisitingScreen>
       body: Column(
         children: [
           const VisitingScreenTittle(),
-          VisitingScreenDefaultTabs(
+          VisitingScreenTabBar(
             tabController: _tabController,
             inactiveColor: _inactiveColor,
             updateTabs: _updateTabs,
-            tab1: _tab1,
-            tab2: _tab2,
+            tabs: [_tab1, _tab2],
           ),
           VisitingScreenTabBarView(
             tabController: _tabController,
