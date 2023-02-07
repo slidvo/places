@@ -70,7 +70,7 @@ class SightCard extends StatelessWidget {
                     right: 18,
                     top: 19,
                     child: Container(
-                      child: Image.asset("res/image/Heart.png"),
+                      child: Image.asset("res/image/heart.png"),
                     ),
                   ),
                 ],
