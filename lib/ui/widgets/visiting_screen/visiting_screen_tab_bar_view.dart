@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:places/domain/favorite_visit_place.dart';
-import 'package:places/ui/screen/favorite_visit_place_card.dart';
+import 'package:places/ui/screens/favorite_visit_place_card.dart';
 
 import 'favorite_visit_place_achieved_empty_screen.dart';
 import 'favorite_visit_place_empty_screen.dart';
