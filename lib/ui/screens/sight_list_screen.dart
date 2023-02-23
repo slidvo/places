@@ -33,15 +33,17 @@ class _SightListScreenState extends State<SightListScreen> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(125),
           child: AppBar(
-            backgroundColor: defaultColor,
             systemOverlayStyle: const SystemUiOverlayStyle(
               statusBarColor: Colors.transparent,
             ),
             elevation: 0,
             toolbarHeight: 128,
-            title: Text(
-              "Список\nинтересных мест",
-              style: Theme.of(context).textTheme.headline4,
+            title: Container(
+              alignment: Alignment.center,
+              child: Text(
+                "Список интересных мест",
+                style: (_isLight ? _lightTheme : _darkTheme).textTheme.headline5,
+              ),
             ),
           ),
         ),
@@ -53,8 +55,14 @@ class _SightListScreenState extends State<SightListScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Column(
-                    children:
-                        mocks.map((sight) => SightCard(sight: sight)).toList(),
+                    children: mocks
+                        .map(
+                          (sight) => SightCard(
+                            sight: sight,
+                            isLight: _isLight,
+                          ),
+                        )
+                        .toList(),
                   ),
                 ],
               )

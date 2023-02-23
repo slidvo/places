@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
+import 'package:places/ui/screens/res/custom_colors.dart';
 
 class SightCard extends StatelessWidget {
   final Sight sight;
+  final bool isLight;
 
-  const SightCard({required this.sight, Key? key}) : super(key: key);
+  const SightCard({
+    required this.sight,
+    required this.isLight,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,8 +18,10 @@ class SightCard extends StatelessWidget {
       aspectRatio: 3 / 2,
       child: Container(
         margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-        decoration: const BoxDecoration(
-            color: Color.fromRGBO(245, 245, 245, 1),
+        decoration: BoxDecoration(
+            color: isLight
+                ? CustomColors.lmSightCardBackgroundColor
+                : CustomColors.dmSightCardBackgroundColor,
             borderRadius: BorderRadius.all(Radius.circular(12))),
         child: Column(
           children: [
@@ -44,7 +52,7 @@ class SightCard extends StatelessWidget {
                             child: CircularProgressIndicator(
                               value: loadingProgress.expectedTotalBytes != null
                                   ? loadingProgress.cumulativeBytesLoaded /
-                                  loadingProgress.expectedTotalBytes!
+                                      loadingProgress.expectedTotalBytes!
                                   : null,
                             ),
                           );
