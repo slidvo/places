@@ -16,7 +16,6 @@ class SightListScreen extends StatefulWidget {
 
 class _SightListScreenState extends State<SightListScreen> {
   var _isLight = true;
-  final Color defaultColor = Colors.white;
 
   void switchTheme() {
     setState(() {
@@ -38,12 +37,9 @@ class _SightListScreenState extends State<SightListScreen> {
             ),
             elevation: 0,
             toolbarHeight: 128,
-            title: Container(
-              alignment: Alignment.center,
-              child: Text(
-                "Список интересных мест",
-                style: (_isLight ? _lightTheme : _darkTheme).textTheme.headline5,
-              ),
+            title: Text(
+              "Список\nинтересных мест",
+              style: (_isLight ? _lightTheme : _darkTheme).textTheme.titleLarge,
             ),
           ),
         ),
@@ -59,7 +55,6 @@ class _SightListScreenState extends State<SightListScreen> {
                         .map(
                           (sight) => SightCard(
                             sight: sight,
-                            isLight: _isLight,
                           ),
                         )
                         .toList(),

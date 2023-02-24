@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
-import 'package:places/ui/screens/res/custom_colors.dart';
 
 class SightCard extends StatelessWidget {
   final Sight sight;
-  final bool isLight;
 
   const SightCard({
     required this.sight,
-    required this.isLight,
     Key? key,
   }) : super(key: key);
 
@@ -19,9 +16,7 @@ class SightCard extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
         decoration: BoxDecoration(
-            color: isLight
-                ? CustomColors.lmSightCardBackgroundColor
-                : CustomColors.dmSightCardBackgroundColor,
+          color: Theme.of(context).backgroundColor,
             borderRadius: BorderRadius.all(Radius.circular(12))),
         child: Column(
           children: [
@@ -65,26 +60,18 @@ class SightCard extends StatelessWidget {
                     top: 16,
                     child: Text(
                       sight.type,
-                      style: const TextStyle(
-                          color: Colors.white54,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                          height: 1.29,
-                          fontStyle: FontStyle.normal,
-                          fontFamily: "Roboto"),
+                      style: TextStyle(color: Theme.of(context).primaryColor),
                     ),
                   ),
                   Positioned(
                     right: 18,
                     top: 19,
-                    child: Container(
-                      child: Image.asset("res/image/heart.png"),
-                    ),
+                    child: Image.asset("res/image/heart.png"),
                   ),
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Expanded(
@@ -100,10 +87,7 @@ class SightCard extends StatelessWidget {
                         children: [
                           Text(
                             sight.name,
-                            style: const TextStyle(
-                              fontFamily: "Roboto",
-                              fontSize: 16,
-                            ),
+                            style: Theme.of(context).textTheme.bodyText1,
                           ),
                           ConstrainedBox(
                             constraints: const BoxConstraints(
@@ -113,8 +97,6 @@ class SightCard extends StatelessWidget {
                               sight.details,
                               style: const TextStyle(
                                 color: Color.fromRGBO(124, 126, 146, 1),
-                                fontFamily: "Roboto",
-                                fontSize: 14,
                               ),
                               overflow: TextOverflow.ellipsis,
                             ),
