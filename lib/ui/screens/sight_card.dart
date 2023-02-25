@@ -60,7 +60,7 @@ class SightCard extends StatelessWidget {
                     top: 16,
                     child: Text(
                       sight.type,
-                      style: TextStyle(color: Theme.of(context).primaryColor),
+                      style: const TextStyle(color: Colors.white),
                     ),
                   ),
                   Positioned(

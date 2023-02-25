@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:places/mocks.dart';
-import 'package:places/ui/screens/res/themes.dart';
+import 'package:places/ui/screens/res/custom_theme.dart';
 import 'package:places/ui/screens/sight_card.dart';
 
 final ThemeData _lightTheme = CustomTheme.getLightTheme();
