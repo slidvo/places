@@ -21,8 +21,7 @@ class VisitingScreenTabBar extends StatelessWidget {
       height: 40,
       width: double.infinity,
       margin: const EdgeInsets.fromLTRB(16, 6, 15, 6),
-      decoration: BoxDecoration(
-        color: inactiveColor,
+      decoration: const BoxDecoration(
         borderRadius: tabBorderRadius,
       ),
       child: TabBar(
@@ -33,7 +32,6 @@ class VisitingScreenTabBar extends StatelessWidget {
         labelPadding: EdgeInsets.zero,
         indicatorColor: Colors.transparent,
         splashBorderRadius: tabBorderRadius,
-        labelColor: Colors.transparent,
         tabs: tabs,
       ),
     );

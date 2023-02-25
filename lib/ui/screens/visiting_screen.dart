@@ -27,6 +27,7 @@ class _VisitingScreenState extends State<VisitingScreen>
   late TabController _tabController;
   late Widget _tab1;
   late Widget _tab2;
+  var _isLight = false;
 
   @override
   void initState() {
@@ -67,7 +68,6 @@ class _VisitingScreenState extends State<VisitingScreen>
     });
   }
 
-  var _isLight = true;
 
   void switchTheme() {
     setState(() {
@@ -103,8 +103,6 @@ class _VisitingScreenState extends State<VisitingScreen>
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
-          unselectedItemColor: Colors.black,
-          selectedItemColor: Colors.blue,
           items: [
             BottomNavigationBarItem(
                 icon: Image.asset("res/image/list_icon.png"), label: ""),

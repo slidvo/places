@@ -11,10 +11,11 @@ class CustomTheme {
   static ThemeData getLightTheme() {
     return lightTheme.copyWith(
       appBarTheme: lightTheme.appBarTheme.copyWith(
-        color: CustomColors.lmSightCardBackgroundColor,
         systemOverlayStyle: const SystemUiOverlayStyle(
-            statusBarBrightness: Brightness.light,
-            statusBarIconBrightness: Brightness.dark),
+          statusBarBrightness: Brightness.light,
+          statusBarIconBrightness: Brightness.dark,
+          statusBarColor: Colors.transparent,
+        ),
       ),
       scaffoldBackgroundColor: CustomColors.lmBackgroundColor,
       backgroundColor: Colors.white,
@@ -27,10 +28,12 @@ class CustomTheme {
   static ThemeData getDarkTheme() {
     return darkTheme.copyWith(
       appBarTheme: darkTheme.appBarTheme.copyWith(
-        color: CustomColors.dmBackgroundColor,
+        backgroundColor: Colors.transparent,
+        shadowColor: Colors.transparent,
         systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarBrightness: Brightness.dark,
           statusBarIconBrightness: Brightness.light,
+          statusBarColor: Colors.transparent,
         ),
       ),
       scaffoldBackgroundColor: CustomColors.dmBackgroundColor,
