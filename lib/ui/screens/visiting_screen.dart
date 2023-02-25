@@ -85,11 +85,6 @@ class _VisitingScreenState extends State<VisitingScreen>
           child: AppBar(
             backgroundColor: Colors.transparent,
             shadowColor: Colors.transparent,
-            systemOverlayStyle: const SystemUiOverlayStyle(
-              statusBarColor: Colors.transparent,
-              statusBarBrightness: Brightness.dark,
-              statusBarIconBrightness: Brightness.dark,
-            ),
           ),
         ),
         body: Column(

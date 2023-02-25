@@ -32,9 +32,8 @@ class _SightListScreenState extends State<SightListScreen> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(125),
           child: AppBar(
-            systemOverlayStyle: const SystemUiOverlayStyle(
-              statusBarColor: Colors.transparent,
-            ),
+            backgroundColor: Colors.transparent,
+            shadowColor: Colors.transparent,
             elevation: 0,
             toolbarHeight: 128,
             title: Text(
