@@ -1,12 +1,18 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:places/mocks.dart';
+import 'package:places/ui/screens/res/custom_theme.dart';
 import 'package:places/ui/widgets/visiting_screen/custom_tab_bar_text.dart';
 
+import '../../mocks.dart';
 import '../widgets/visiting_screen/visiting_screen_tab_container.dart';
 import '../widgets/visiting_screen/visiting_screen_tab_bar.dart';
 import '../widgets/visiting_screen/visiting_screen_tab_bar_view.dart';
 import '../widgets/visiting_screen/visiting_screen_title.dart';
+
+
+final ThemeData _lightTheme = CustomTheme.getLightTheme();
+final ThemeData _darkTheme = CustomTheme.getDarkTheme();
 
 class VisitingScreen extends StatefulWidget {
   const VisitingScreen({Key? key}) : super(key: key);
@@ -61,49 +67,64 @@ class _VisitingScreenState extends State<VisitingScreen>
     });
   }
 
+  var _isLight = true;
+
+  void switchTheme() {
+    setState(() {
+      _isLight = !_isLight;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.zero,
-        child: AppBar(
-          backgroundColor: Colors.transparent,
-          shadowColor: Colors.transparent,
-          systemOverlayStyle: const SystemUiOverlayStyle(
-            statusBarColor: Colors.transparent,
-            statusBarBrightness: Brightness.dark,
-            statusBarIconBrightness: Brightness.dark,
+    return MaterialApp(
+      theme: _isLight ? _lightTheme : _darkTheme,
+      home: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.zero,
+          child: AppBar(
+            backgroundColor: Colors.transparent,
+            shadowColor: Colors.transparent,
+            systemOverlayStyle: const SystemUiOverlayStyle(
+              statusBarColor: Colors.transparent,
+              statusBarBrightness: Brightness.dark,
+              statusBarIconBrightness: Brightness.dark,
+            ),
           ),
         ),
-      ),
-      body: Column(
-        children: [
-          const VisitingScreenTittle(),
-          VisitingScreenTabBar(
-            tabController: _tabController,
-            inactiveColor: _inactiveColor,
-            updateTabs: _updateTabs,
-            tabs: [_tab1, _tab2],
-          ),
-          VisitingScreenTabBarView(
-            tabController: _tabController,
-            favoriteVisitPlaces: favoriteVisitPlaceMocks,
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: Colors.black,
-        selectedItemColor: Colors.blue,
-        items: [
-          BottomNavigationBarItem(
-              icon: Image.asset("res/image/list_icon.png"), label: ""),
-          BottomNavigationBarItem(
-              icon: Image.asset("res/image/map_icon.png"), label: ""),
-          BottomNavigationBarItem(
-              icon: Image.asset("res/image/heart_full.png"), label: ""),
-          BottomNavigationBarItem(
-              icon: Image.asset("res/image/settings_icon.png"), label: ""),
-        ],
+        body: Column(
+          children: [
+            const VisitingScreenTittle(),
+            VisitingScreenTabBar(
+              tabController: _tabController,
+              inactiveColor: _inactiveColor,
+              updateTabs: _updateTabs,
+              tabs: [_tab1, _tab2],
+            ),
+            VisitingScreenTabBarView(
+              tabController: _tabController,
+              favoriteVisitPlaces: favoriteVisitPlaceMocks,
+            ),
+          ],
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          unselectedItemColor: Colors.black,
+          selectedItemColor: Colors.blue,
+          items: [
+            BottomNavigationBarItem(
+                icon: Image.asset("res/image/list_icon.png"), label: ""),
+            BottomNavigationBarItem(
+                icon: Image.asset("res/image/map_icon.png"), label: ""),
+            BottomNavigationBarItem(
+                icon: Image.asset("res/image/heart_full.png"), label: ""),
+            BottomNavigationBarItem(
+                icon: Image.asset("res/image/settings_icon.png"), label: ""),
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.format_color_fill),
+          onPressed: () => switchTheme(),
+        ),
       ),
     );
   }

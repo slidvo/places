@@ -25,9 +25,9 @@ class _FavoriteVisitPlaceCardState extends State<FavoriteVisitPlaceCard> {
       width: double.infinity,
       height: 260,
       margin: const EdgeInsets.fromLTRB(15, 30, 15, 15),
-      decoration: const BoxDecoration(
-        color: Color.fromRGBO(245, 245, 245, 1),
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: Theme.of(context).backgroundColor,
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(12),
           topRight: Radius.circular(12),
           bottomLeft: Radius.circular(12),
