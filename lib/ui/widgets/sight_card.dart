@@ -17,7 +17,7 @@ class SightCard extends StatelessWidget {
         margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
         decoration: BoxDecoration(
           color: Theme.of(context).backgroundColor,
-            borderRadius: BorderRadius.all(Radius.circular(12))),
+            borderRadius: const BorderRadius.all(Radius.circular(12))),
         child: Column(
           children: [
             Expanded(

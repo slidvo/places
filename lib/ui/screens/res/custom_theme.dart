@@ -17,8 +17,8 @@ class CustomTheme {
           statusBarColor: Colors.transparent,
         ),
       ),
-      scaffoldBackgroundColor: CustomColors.lmBackgroundColor,
-      backgroundColor: Colors.white,
+      scaffoldBackgroundColor: CustomColors.lmScaffoldBackgroundColor,
+      backgroundColor: CustomColors.lmBackgroundColor,
       textTheme: lightTheme.textTheme.copyWith(
         titleLarge: largeTitle32Bold.copyWith(color: Colors.black),
       ),
@@ -36,8 +36,8 @@ class CustomTheme {
           statusBarColor: Colors.transparent,
         ),
       ),
-      scaffoldBackgroundColor: CustomColors.dmBackgroundColor,
-      backgroundColor: CustomColors.dmSightCardBackgroundColor,
+      scaffoldBackgroundColor: CustomColors.dmScaffoldBackgroundColor,
+      backgroundColor: CustomColors.dmBackgroundColor,
       textTheme: darkTheme.textTheme.copyWith(
         titleLarge: largeTitle32Bold.copyWith(
           color: Colors.white,

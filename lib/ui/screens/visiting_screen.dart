@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/ui/screens/res/custom_theme.dart';
 import 'package:places/ui/widgets/visiting_screen/custom_tab_bar_text.dart';
 
@@ -105,7 +106,7 @@ class _VisitingScreenState extends State<VisitingScreen>
         bottomNavigationBar: BottomNavigationBar(
           items: [
             BottomNavigationBarItem(
-                icon: Image.asset("res/image/list_icon.png"), label: ""),
+                icon: SvgPicture.asset("res/image/list_icon.svg", color: Colors.white,),label: ""),
             BottomNavigationBarItem(
                 icon: Image.asset("res/image/map_icon.png"), label: ""),
             BottomNavigationBarItem(
