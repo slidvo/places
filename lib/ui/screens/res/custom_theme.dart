@@ -22,6 +22,9 @@ class CustomTheme {
       textTheme: lightTheme.textTheme.copyWith(
         titleLarge: largeTitle32Bold.copyWith(color: Colors.black),
       ),
+      bottomNavigationBarTheme: lightTheme.bottomNavigationBarTheme.copyWith(
+        selectedItemColor: Colors.black,
+      ),
     );
   }
 
@@ -42,6 +45,9 @@ class CustomTheme {
         titleLarge: largeTitle32Bold.copyWith(
           color: Colors.white,
         ),
+      ),
+      bottomNavigationBarTheme: darkTheme.bottomNavigationBarTheme.copyWith(
+        selectedItemColor: Colors.white,
       ),
     );
   }

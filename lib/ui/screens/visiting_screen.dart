@@ -1,19 +1,22 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/ui/screens/res/custom_theme.dart';
 import 'package:places/ui/widgets/visiting_screen/custom_tab_bar_text.dart';
 
-import '../../mocks.dart';
-import '../widgets/visiting_screen/visiting_screen_tab_container.dart';
-import '../widgets/visiting_screen/visiting_screen_tab_bar.dart';
-import '../widgets/visiting_screen/visiting_screen_tab_bar_view.dart';
-import '../widgets/visiting_screen/visiting_screen_title.dart';
-
+import 'package:places/mocks.dart';
+import 'package:places/ui/widgets/visiting_screen/visiting_screen_tab_container.dart';
+import 'package:places/ui/widgets/visiting_screen/visiting_screen_tab_bar.dart';
+import 'package:places/ui/widgets/visiting_screen/visiting_screen_tab_bar_view.dart';
+import 'package:places/ui/widgets/visiting_screen/visiting_screen_title.dart';
 
 final ThemeData _lightTheme = CustomTheme.getLightTheme();
 final ThemeData _darkTheme = CustomTheme.getDarkTheme();
+final List<String> _assets = [
+  "res/image/list_icon.svg",
+  "res/image/map_icon.svg",
+  "res/image/heart_full.svg",
+  "res/image/settings.svg"
+];
 
 class VisitingScreen extends StatefulWidget {
   const VisitingScreen({Key? key}) : super(key: key);
@@ -69,17 +72,19 @@ class _VisitingScreenState extends State<VisitingScreen>
     });
   }
 
+  var currTheme = _darkTheme;
 
   void switchTheme() {
     setState(() {
       _isLight = !_isLight;
+      currTheme = _isLight ? _lightTheme : _darkTheme;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: _isLight ? _lightTheme : _darkTheme,
+      theme: currTheme,
       home: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.zero,
@@ -105,14 +110,13 @@ class _VisitingScreenState extends State<VisitingScreen>
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: [
-            BottomNavigationBarItem(
-                icon: SvgPicture.asset("res/image/list_icon.svg", color: Colors.white,),label: ""),
-            BottomNavigationBarItem(
-                icon: Image.asset("res/image/map_icon.png"), label: ""),
-            BottomNavigationBarItem(
-                icon: Image.asset("res/image/heart_full.png"), label: ""),
-            BottomNavigationBarItem(
-                icon: Image.asset("res/image/settings_icon.png"), label: ""),
+            for (var assetPath in _assets)
+              BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    assetPath,
+                    color: currTheme.bottomNavigationBarTheme.selectedItemColor,
+                  ),
+                  label: ""),
           ],
         ),
         floatingActionButton: FloatingActionButton(
