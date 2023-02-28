@@ -20,7 +20,12 @@ class CustomTheme {
       scaffoldBackgroundColor: CustomColors.lmScaffoldBackgroundColor,
       backgroundColor: CustomColors.lmBackgroundColor,
       textTheme: lightTheme.textTheme.copyWith(
-        titleLarge: largeTitle32Bold.copyWith(color: Colors.black),
+        titleLarge: largeTitle32Bold.copyWith(
+          color: Colors.black,
+        ),
+        titleSmall: titleSmall24Bold.copyWith(
+          color: Colors.black,
+        ),
       ),
       bottomNavigationBarTheme: lightTheme.bottomNavigationBarTheme.copyWith(
         selectedItemColor: Colors.black,
@@ -44,6 +49,9 @@ class CustomTheme {
       textTheme: darkTheme.textTheme.copyWith(
         titleLarge: largeTitle32Bold.copyWith(
           color: Colors.white,
+        ),
+        titleSmall: titleSmall24Bold.copyWith(
+          color: Colors.black,
         ),
       ),
       bottomNavigationBarTheme: darkTheme.bottomNavigationBarTheme.copyWith(
