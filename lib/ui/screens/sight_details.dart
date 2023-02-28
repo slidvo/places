@@ -79,14 +79,12 @@ class _SightDetailsState extends State<SightDetails> {
                     ),
                     Positioned(
                       bottom: 0,
-                      child: SizedBox(
+                      child: Container(
                         height: 7.75,
                         width: 152,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Color.fromRGBO(37, 40, 73, 1),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
+                        decoration: BoxDecoration(
+                          color: const Color.fromRGBO(37, 40, 73, 1),
+                          borderRadius: BorderRadius.circular(8),
                         ),
                       ),
                     ),
