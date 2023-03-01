@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:places/ui/screens/res/assets_path.dart';
 import 'package:places/ui/screens/res/custom_theme.dart';
 import 'package:places/ui/screens/res/localization.dart';
 import 'package:places/ui/widgets/visiting_screen/custom_tab_bar_text.dart';
@@ -12,12 +13,6 @@ import 'package:places/ui/widgets/visiting_screen/visiting_screen_title.dart';
 
 final ThemeData _lightTheme = CustomTheme.getLightTheme();
 final ThemeData _darkTheme = CustomTheme.getDarkTheme();
-final List<String> _assets = [
-  "res/image/list_icon.svg",
-  "res/image/map_icon.svg",
-  "res/image/heart_full.svg",
-  "res/image/settings.svg"
-];
 
 class VisitingScreen extends StatefulWidget {
   const VisitingScreen({Key? key}) : super(key: key);
@@ -111,7 +106,7 @@ class _VisitingScreenState extends State<VisitingScreen>
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: [
-            for (var assetPath in _assets)
+            for (var assetPath in AssetsPath.assets)
               BottomNavigationBarItem(
                   icon: SvgPicture.asset(
                     assetPath,

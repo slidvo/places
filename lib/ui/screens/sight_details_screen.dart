@@ -6,16 +6,16 @@ import '../../domain/sight.dart';
 final ThemeData _lightTheme = CustomTheme.getLightTheme();
 final ThemeData _darkTheme = CustomTheme.getDarkTheme();
 
-class SightDetails extends StatefulWidget {
+class SightDetailsScreen extends StatefulWidget {
   final Sight sight;
 
-  const SightDetails({required this.sight, Key? key}) : super(key: key);
+  const SightDetailsScreen({required this.sight, Key? key}) : super(key: key);
 
   @override
-  State<SightDetails> createState() => _SightDetailsState();
+  State<SightDetailsScreen> createState() => _SightDetailsScreenState();
 }
 
-class _SightDetailsState extends State<SightDetails> {
+class _SightDetailsScreenState extends State<SightDetailsScreen> {
   var currTheme = _darkTheme;
   var _isLight = false;
 
