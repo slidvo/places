@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
+import 'package:places/ui/widgets/circular_progress_indicator_widget.dart';
 
 class SightCard extends StatelessWidget {
   final Sight sight;
@@ -16,7 +17,7 @@ class SightCard extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
         decoration: BoxDecoration(
-          color: Theme.of(context).backgroundColor,
+            color: Theme.of(context).backgroundColor,
             borderRadius: const BorderRadius.all(Radius.circular(12))),
         child: Column(
           children: [
@@ -44,11 +45,8 @@ class SightCard extends StatelessWidget {
                         loadingBuilder: (context, child, loadingProgress) {
                           if (loadingProgress == null) return child;
                           return Center(
-                            child: CircularProgressIndicator(
-                              value: loadingProgress.expectedTotalBytes != null
-                                  ? loadingProgress.cumulativeBytesLoaded /
-                                      loadingProgress.expectedTotalBytes!
-                                  : null,
+                            child: CircularProgressIndicatorWidget(
+                              loadingProgress: loadingProgress,
                             ),
                           );
                         },

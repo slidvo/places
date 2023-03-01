@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:places/ui/screens/res/custom_theme.dart';
 import 'package:places/ui/screens/res/localization.dart';
+import 'package:places/ui/widgets/circular_progress_indicator_widget.dart';
 import '../../domain/sight.dart';
 
 final ThemeData _lightTheme = CustomTheme.getLightTheme();
@@ -50,11 +51,8 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                           child: SizedBox(
                             width: 150,
                             height: 150,
-                              child: CircularProgressIndicator(
-                              value: loadingProgress.expectedTotalBytes != null
-                                  ? loadingProgress.cumulativeBytesLoaded /
-                                      loadingProgress.expectedTotalBytes!
-                                  : null,
+                            child: CircularProgressIndicatorWidget(
+                              loadingProgress: loadingProgress,
                             ),
                           ),
                         );
