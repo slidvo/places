@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:places/mocks.dart';
 import 'package:places/ui/screens/res/custom_theme.dart';
+import 'package:places/ui/screens/res/localization.dart';
 import 'package:places/ui/widgets/sight_card.dart';
 
 final ThemeData _lightTheme = CustomTheme.getLightTheme();
@@ -16,18 +16,20 @@ class SightListScreen extends StatefulWidget {
 
 class _SightListScreenState extends State<SightListScreen> {
   var _isLight = true;
+  var currTheme = _darkTheme;
 
   void switchTheme() {
     setState(() {
       _isLight = !_isLight;
+      currTheme = _isLight ? _lightTheme : _darkTheme;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Интересные места",
-      theme: _isLight ? _lightTheme : _darkTheme,
+      title: Localization.interestingPlaces,
+      theme: currTheme,
       home: Scaffold(
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(125),
@@ -37,8 +39,8 @@ class _SightListScreenState extends State<SightListScreen> {
             elevation: 0,
             toolbarHeight: 128,
             title: Text(
-              "Список\nинтересных мест",
-              style: (_isLight ? _lightTheme : _darkTheme).textTheme.titleLarge,
+              Localization.interestingPlacesList,
+              style: currTheme.textTheme.titleLarge,
             ),
           ),
         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/ui/screens/res/custom_theme.dart';
+import 'package:places/ui/screens/res/localization.dart';
 import 'package:places/ui/widgets/visiting_screen/custom_tab_bar_text.dart';
 
 import 'package:places/mocks.dart';
@@ -49,21 +50,21 @@ class _VisitingScreenState extends State<VisitingScreen>
   }
 
   void _activateTab1() {
-    _tab1 = const VisitingScreenTabContainer(
+    _tab1 = VisitingScreenTabContainer(
+        visitingTabBarText: VisitingTabBarText(
+            title: Localization.wantToVisit, isActive: true));
+    _tab2 = VisitingScreenTabContainer(
         visitingTabBarText:
-            VisitingTabBarText(title: "Хочу посетить", isActive: true));
-    _tab2 = const VisitingScreenTabContainer(
-        visitingTabBarText:
-            VisitingTabBarText(title: "Посетил", isActive: false));
+            VisitingTabBarText(title: Localization.visited, isActive: false));
   }
 
   void _activeTab2() {
-    _tab1 = const VisitingScreenTabContainer(
+    _tab1 = VisitingScreenTabContainer(
+        visitingTabBarText: VisitingTabBarText(
+            title: Localization.wantToVisit, isActive: false));
+    _tab2 = VisitingScreenTabContainer(
         visitingTabBarText:
-            VisitingTabBarText(title: "Хочу посетить", isActive: false));
-    _tab2 = const VisitingScreenTabContainer(
-        visitingTabBarText:
-            VisitingTabBarText(title: "Посетил", isActive: true));
+            VisitingTabBarText(title: Localization.visited, isActive: true));
   }
 
   void _updateTabs({required int tabIndex}) {
