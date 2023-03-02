@@ -16,8 +16,6 @@ class VisitingScreenTabContainer extends StatelessWidget {
                 ? const Color.fromRGBO(59, 62, 91, 1)
                 : const Color.fromRGBO(245, 245, 245, 1),
             borderRadius: const BorderRadius.all(Radius.circular(40))),
-        height: 40,
-        width: double.infinity,
         child: visitingTabBarText);
   }
 }
