@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:places/ui/screens/res/custom_theme.dart';
 import 'package:places/ui/screens/res/localization.dart';
 import 'package:places/ui/widgets/circular_progress_indicator_widget.dart';
+import 'package:places/ui/widgets/sight_details_screen/back_button_sight_details.dart';
+import 'package:places/ui/widgets/sight_details_screen/build_route_button.dart';
+import 'package:places/ui/widgets/sight_details_screen/plan_button.dart';
+import 'package:places/ui/widgets/sight_details_screen/to_favorite_button.dart';
 import '../../domain/sight.dart';
 
 final ThemeData _lightTheme = CustomTheme.getLightTheme();
@@ -59,19 +63,10 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
                       },
                     ),
                   ),
-                  Positioned(
+                  const Positioned(
                     top: 36,
                     left: 16,
-                    child: Container(
-                        width: 32,
-                        height: 32,
-                        decoration: BoxDecoration(
-                          color: currTheme.backgroundColor,
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(10),
-                          ),
-                        ),
-                        child: const Icon(Icons.arrow_back_ios_new, size: 14)),
+                    child: BackButtonSightDetails(),
                   ),
                   Positioned(
                     bottom: 0,
@@ -132,67 +127,16 @@ class _SightDetailsScreenState extends State<SightDetailsScreen> {
               height: 24,
               color: Colors.transparent,
             ),
-            Container(
-              height: 48,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: const Color.fromRGBO(76, 175, 80, 1),
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 20,
-                    height: 22,
-                    color: Colors.white,
-                  ),
-                  const Divider(
-                    color: Colors.transparent,
-                    indent: 16,
-                  ),
-                  Text(
-                    Localization.buildRoute,
-                    style: currTheme.textTheme.bodyText1,
-                  )
-                ],
-              ),
-            ),
+            const BuildRouteButton(),
             const Divider(height: 24),
             SizedBox(
               height: 40,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        children: [
-                          const Icon(
-                            Icons.calendar_month,
-                            size: 24,
-                          ),
-                          const Divider(indent: 9),
-                          Text(Localization.plan)
-                        ],
-                      ),
-                    ],
-                  ),
-                  const Divider(indent: 16),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        children: [
-                          const Icon(Icons.favorite_border),
-                          const Divider(indent: 9),
-                          Text(Localization.favorites),
-                        ],
-                      ),
-                    ],
-                  ),
+                children: const [
+                  PlanButton(),
+                  Divider(indent: 16),
+                  ToFavoriteButton(),
                 ],
               ),
             ),

@@ -27,6 +27,7 @@ class VisitingScreenTabBar extends StatelessWidget {
       child: TabBar(
         controller: tabController,
         onTap: (tabIndex) {
+          debugPrint("Нажат таб c индексом $tabIndex");
           updateTabs(tabIndex: tabIndex);
         },
         labelPadding: EdgeInsets.zero,

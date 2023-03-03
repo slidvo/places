@@ -42,17 +42,26 @@ class _VisitingScreenTabBarViewState extends State<VisitingScreenTabBarView> {
               : ListView.builder(
                   itemCount: favoriteVisitPlacesNotAchieved.length,
                   itemBuilder: (context, index) {
-                    return FavoriteVisitPlaceCard(
-                        favoriteVisitPlace:
-                            favoriteVisitPlacesNotAchieved[index]);
+                    return InkWell(
+                      onTap: () => debugPrint(
+                          "Нажата карточка ${favoriteVisitPlacesNotAchieved[index].sight.name}"),
+                      child: FavoriteVisitPlaceCard(
+                          favoriteVisitPlace:
+                              favoriteVisitPlacesNotAchieved[index]),
+                    );
                   },
                 ),
           favoriteVisitPlacesAchieved.isEmpty
               ? const FavoriteVisitPlaceAchievedEmptyScreen()
               : ListView.builder(
                   itemCount: favoriteVisitPlacesAchieved.length,
-                  itemBuilder: (context, index) => FavoriteVisitPlaceCard(
-                      favoriteVisitPlace: favoriteVisitPlacesAchieved[index]))
+                  itemBuilder: (context, index) => InkWell(
+                        onTap: () => debugPrint(
+                            "Нажата карточка ${favoriteVisitPlacesAchieved[index].sight.name}"),
+                        child: FavoriteVisitPlaceCard(
+                            favoriteVisitPlace:
+                                favoriteVisitPlacesAchieved[index]),
+                      ))
         ],
       ),
     );

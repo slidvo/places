@@ -54,8 +54,11 @@ class _SightListScreenState extends State<SightListScreen> {
                   Column(
                     children: mocks
                         .map(
-                          (sight) => SightCard(
-                            sight: sight,
+                          (sight) => InkWell(
+                            onTap: () => debugPrint("Нажата карточка ${sight.name}"),
+                            child: SightCard(
+                              sight: sight,
+                            ),
                           ),
                         )
                         .toList(),

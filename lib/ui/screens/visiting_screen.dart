@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:places/ui/screens/res/assets_path.dart';
 import 'package:places/ui/screens/res/custom_theme.dart';
 import 'package:places/ui/screens/res/localization.dart';
+import 'package:places/ui/widgets/bottom_navigation_bar_custom.dart';
 import 'package:places/ui/widgets/visiting_screen/custom_tab_bar_text.dart';
 
 import 'package:places/mocks.dart';
@@ -104,17 +103,7 @@ class _VisitingScreenState extends State<VisitingScreen>
             ),
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: [
-            for (var assetPath in AssetsPath.assets)
-              BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    assetPath,
-                    color: currTheme.bottomNavigationBarTheme.selectedItemColor,
-                  ),
-                  label: ""),
-          ],
-        ),
+        bottomNavigationBar: const BottomNavigationBarCustom(),
         floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.format_color_fill),
           onPressed: () => switchTheme(),
