@@ -23,9 +23,10 @@ class CustomTheme {
         titleLarge: largeTitle32Bold.copyWith(
           color: Colors.black,
         ),
-        titleSmall: titleSmall24Bold.copyWith(
+        titleMedium: titleMedium24Bold.copyWith(
           color: Colors.black,
         ),
+        bodyLarge: bodyLarge14Bold.copyWith(color: Colors.black),
       ),
       bottomNavigationBarTheme: lightTheme.bottomNavigationBarTheme.copyWith(
         selectedItemColor: Colors.black,
@@ -50,8 +51,11 @@ class CustomTheme {
         titleLarge: largeTitle32Bold.copyWith(
           color: Colors.white,
         ),
-        titleSmall: titleSmall24Bold.copyWith(
-          color: Colors.black,
+        titleSmall: titleMedium24Bold.copyWith(
+          color: Colors.white,
+        ),
+        bodyLarge: bodyLarge14Bold.copyWith(
+          color: Colors.white,
         ),
       ),
       bottomNavigationBarTheme: darkTheme.bottomNavigationBarTheme.copyWith(
